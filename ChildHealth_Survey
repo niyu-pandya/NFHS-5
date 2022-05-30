@@ -1,0 +1,14 @@
+*****************************************************************************************************************************
+*   Project: NFHS-5 Analysis (CHILD HEALTH), Anuvaad						 									 																	 		    *
+*   Task: Survey Weights for NFHS-5 Child Health																																						*
+*	  Authors: Niharika Pandya (Anuvaad) and Dr. Lindsay Jaacks (University of Edinburgh)																			*
+*   Date: 30 May 2022																																																				*
+*		Last updated: 30 May 2022		  						             	    																														*
+*****************************************************************************************************************************
+
+clear all
+cls
+use "C:\Users\v1npandy\Documents\WHO_igrowup_workdata\mysurvey_z_rc_ChildCleaned_06012022.dta", clear
+
+*Set survey weights 
+svyset [pweight=surveyweight], psu(cluster_no) strata(sample_strata) singleunit(centered)
