@@ -18,7 +18,6 @@ set maxvar 15000
 use "C:\Users\v1npandy\OneDrive - ANUVAAD SOLUTIONS LLP\NFHS5\Births Recode\IABR7AFL.DTA" 
 
 *Keeping only macro and survey weight related vars
-keep caseid v001 v005 v022 v024 v025 v190 bord hw1 hw2 hw3 hw15 b4 hw57 v106 
 
 *Fixing decimal vars 
 replace v005 = v005*0.000001
