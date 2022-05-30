@@ -21,7 +21,7 @@ use "C:\Users\v1npandy\OneDrive - ANUVAAD SOLUTIONS LLP\NFHS5\Births Recode\IABR
 keep caseid v001 v005 v022 v024 v025 v190 bord hw1 hw2 hw3 hw15 b4 hw57 v106 
 
 *Fixing decimal vars 
-replace sweight = v005*0.000001
+replace v005 = v005*0.000001
 replace hw2 = hw2*0.1
 replace hw3 = hw3*0.1
 
