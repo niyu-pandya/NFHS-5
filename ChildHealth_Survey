@@ -8,7 +8,7 @@
 
 clear all
 cls
-use "C:\Users\v1npandy\Documents\WHO_igrowup_workdata\mysurvey_z_rc_ChildCleaned_06012022.dta", clear
+use "C:\Users\v1npandy\Documents\WHO_igrowup_workdata\mysurvey_z_rc_ChildCleaned_29052022.dta", clear
 
 *Set survey weights 
 svyset [pweight=surveyweight], psu(cluster_no) strata(sample_strata) singleunit(centered)
