@@ -18,17 +18,17 @@ set maxvar 15000
 use "C:\Users\v1npandy\OneDrive - ANUVAAD SOLUTIONS LLP\NFHS5\Births Recode\IABR7AFL.DTA" 
 
 *Keeping only macro and survey weight related vars
-keep caseid v001 sweight v022 v024 v025 v190 bord hw1 hw2 hw3 hw15 b4 hw57 v106 
+keep caseid v001 v005 v022 v024 v025 v190 bord hw1 hw2 hw3 hw15 b4 hw57 v106 
 
 *Fixing decimal vars 
-replace sweight = sweight*0.000001
+replace sweight = v005*0.000001
 replace hw2 = hw2*0.1
 replace hw3 = hw3*0.1
 
 *Re-labelling headers and vars 
 rename caseid id
 rename v001 cluster_no
-rename sweight surveyweight
+rename v005 surveyweight
 rename v022 sample_strata
 rename v024 state 
 rename v025 urban_rural 
