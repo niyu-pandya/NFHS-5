@@ -71,5 +71,5 @@ gen nfhssurvey = 1
 		
 /*Dropping vars not needed in the survey files*/		
 drop reflib datalib reflib temp_measure 
-
-save "C:\Users\v1npandy\Documents\WHO_igrowup_workdata\mysurvey_z_rc_ChildCleaned_29052022.dta", replace
+30
+save "C:\Users\v1npandy\Documents\WHO_igrowup_workdata\mysurvey_z_rc_ChildCleaned_30052022.dta", replace
