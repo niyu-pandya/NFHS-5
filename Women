@@ -1,0 +1,31 @@
+
+cls
+set mavar 15000
+use "C:\Users\v1npandy\OneDrive - ANUVAAD SOLUTIONS LLP\NFHS5\Individual Recode\IAIR7AFL.dta"
+
+replace hv005 = hv005/.000001
+svyset [pweight = hv005], psu(hv001) strata(hv022) singleunit(centered)
+
+gen weight_cat = . 
+	replace weight_cat = 3 if v445 >= 2500 & v445 <= 6000
+	replace weight_cat = 2 if v445 >= 1200 & v445 <= 1849 
+	replace weight_cat = 1 if v445 >= 1850 & v445 <= 2499
+	replace weight_cat = . if v213 == 1 
+	replace weight_cat = . if b19_01 <=2 
+	replace weight_cat = . if (v445<1200 | v445>=6000)
+		label define weightcat 3 "overweight" 2 "underweight" 1 "normal"
+		label value weight_cat "weightcat"
+		label var weight_cat "prevalance of overweight underweight and normal"
+
+		
+		
+gen sugar = 1 
+	replace sugar = 2 if sb74 >= 141 & sb74 <= 160 
+	replace sugar = 3 if sb74 >= 160 
+	replace sugar = 4 if sb74 >= 140 | sb56 == 1 
+	replace sugar = . if sb74 == . | sb74 >= 499
+	replace sugar = . if v213 == 1 
+		label define sugar 1 "normal" 2 "high" 3 "very high" 4 "high/very high/taking medication to control blood sugar level"
+		label value sugar "sugar"
+		label var sugar "blood sugar level among non-pregnant women"
+		
