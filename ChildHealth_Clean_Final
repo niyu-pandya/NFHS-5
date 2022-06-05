@@ -53,3 +53,11 @@ gen underweight = .
 	replace underweight = . if waz_mean == . 
 		label value underweight "yesno"
 		label var underweight "Underweight (weight for age) yes no "
+		
+gen anemia = . 
+	replace anemia = 1 if v457 != 4 
+	replace anemia = 0 if v457 == 4 
+	replace anemia = . if v457 == . 
+	label define yesno 1 "yes" 0 "no"
+	label value anemia "yesno"
+	label var anemia "any anemia children"
