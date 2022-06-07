@@ -19,18 +19,6 @@ gen weight_cat = .
 		
 svy: tab sdist weight_cat if sdist == 350
 		
-		
-gen sugar = . 
-	replace sugar = 1 if sb74 > 0 & sb74 <= 140
-	replace sugar = 2 if sb74 >= 141 & sb74 <= 160 
-	replace sugar = 3 if sb74 > 160 
-	replace sugar = . if sb74 == . | sb74 >= 995
-		*label define sugar 1 "normal" 2 "high" 3 "very high" 4 "high/very high/taking medication to control blood sugar level"*
-		label value sugar "sugar"
-		label var sugar "blood sugar level among women"
-svy: tab sdist sugar if sdist == 350
-
-		
 gen anemia = . 
 	replace anemia = 1 if v457 != 4 
 	replace anemia = 0 if v457 == 4 
@@ -54,18 +42,3 @@ gen anemia_notpreg = .
 	replace anemia = . if v213 == 1 
 		label value anemia_preg "yesno"
 		label var anemia_preg "any anemia pregnant women 15-49"
-
-gen sbp_avg=.
-	replace sbp_avg = (sb18s + sb25s + sb29s)/3
-		label var sbp_avg "average of the 3 systolic measurements taken"
-		
-gen dbp_avg=. 
-	replace dbp_avg = (sb18d + sb25d + sb29d)/3
-		label var dbp_avg "average of the 3 diastolic measurements taken"
-		
-/* Clinical hypertension */
-gen long clin_hypt = 0 
-	replace clin_hypt = 1 if (sbp_avg>=140 & sbp_avg<800) | (dbp_avg>=90 & dbp_avg<800)
-	replace clin_hypt = . if sbp_avg>800 & dbp_avg>800 
-		label values clin_hypt "yesno"
-		label variable clin_hypt "Clinical hypertension"
